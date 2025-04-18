@@ -183,3 +183,26 @@ class Scalar:
             Scalar: the quotient of two Scalars
         """
         return other * self ** -1
+
+    def backward(self):
+        """
+        Topologically sorts the graph and calculates the gradients.
+        """
+        order = []
+        visited = set()
+
+        def depth_first_search(vertex):
+            if vertex not in visited:
+                visited.add(vertex)
+
+                for operand in vertex.operands:
+                    depth_first_search(operand)
+
+                order.append(vertex)
+        
+        depth_first_search(self)
+
+        self.gradient = 1.0
+
+        for vertex in reversed(order):
+            vertex.differentiate()
