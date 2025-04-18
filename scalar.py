@@ -135,3 +135,51 @@ class Scalar:
             Scalar: the quotient of two Scalars
         """
         return self * other ** -1
+
+    def __radd__(self, other):
+        """
+        Returns the sum of two Scalars.
+
+        Args:
+            other (Scalar): the other addend
+
+        Returns:
+            Scalar: the sum of two Scalars
+        """
+        return self + other
+
+    def __rsub__(self, other):
+        """
+        Returns the difference of two Scalars.
+
+        Args:
+            other (Scalar): the subtrahend
+
+        Returns:
+            Scalar: the difference of two Scalars
+        """
+        return other + -self
+    
+    def __rmul__(self, other):
+        """
+        Returns the product of two Scalars.
+
+        Args:
+            other (Scalar): the other factor
+
+        Returns:
+            Scalar: the product of two Scalars
+        """
+        return self * other
+
+    def __rtruediv__(self, other):
+        """
+        Returns the quotient of two Scalars.
+
+        Args:
+            other (Scalar): the divisor
+
+        Returns:
+            Scalar: the quotient of two Scalars
+        """
+        return other * self ** -1
