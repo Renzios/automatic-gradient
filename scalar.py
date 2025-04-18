@@ -124,7 +124,7 @@ class Scalar:
         """
         return self + -other
 
-    def __truediv(self, other):
+    def __truediv__(self, other):
         """
         Returns the quotient of two Scalars.
 
