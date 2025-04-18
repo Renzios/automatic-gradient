@@ -28,7 +28,7 @@ class Scalar:
 
     def __repr__(self):
         """
-        Returns a string representation of the Scalar.
+        Returns the string representation of the Scalar.
         """
         return f"{self.value}"
 
@@ -102,3 +102,36 @@ class Scalar:
         result.differentiate = differentiate
 
         return result
+
+    def __neg__(self):
+        """
+        Returns the negative of the Scalar.
+
+        Returns:
+            Scalar: the negative of the Scalar
+        """
+        return self * -1
+
+    def __sub__(self, other):
+        """
+        Returns the difference of two Scalars.
+
+        Args:
+            other (Scalar): the subtrahend
+
+        Returns:
+            Scalar: the difference of two Scalars
+        """
+        return self + -other
+
+    def __truediv(self, other):
+        """
+        Returns the quotient of two Scalars.
+
+        Args:
+            other (Scalar): the divisor
+
+        Returns:
+            Scalar: the quotient of two Scalars
+        """
+        return self * other ** -1
