@@ -1,3 +1,5 @@
+from math import exp
+
 class Scalar:
     """
     A scalar value.
@@ -103,6 +105,22 @@ class Scalar:
 
         return result
 
+    def tanh(self):
+        """
+        Returns the hyperbolic tangent of the Scalar.
+
+        Returns:
+            Scalar: the hybolic tangent of the Scalar
+        """
+        result = Scalar((exp(2 * self.value) - 1) / (exp(2 * self.value) + 1), {self}, "tanh")
+
+        def differentiate():
+            self.gradient += result.gradient * (1 - result.value ** 2)
+
+        result.differentiate = differentiate
+
+        return result
+    
     def __neg__(self):
         """
         Returns the negative of the Scalar.
