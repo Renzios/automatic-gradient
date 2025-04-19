@@ -186,7 +186,7 @@ class Scalar:
 
     def backward(self):
         """
-        Topologically sorts the graph and calculates the gradients.
+        Calculates the gradients in reverse topological order.
         """
         order = []
         visited = set()
